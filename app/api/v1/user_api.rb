@@ -1,4 +1,9 @@
 class V1::User_API < Grape::API
+  helpers Doorkeeper::Grape::Helpers
+
+  before do
+    doorkeeper_authorize!
+  end
 
   resource :users do
     desc "List all User"
